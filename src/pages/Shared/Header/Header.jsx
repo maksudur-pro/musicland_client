@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const navOption = (
@@ -76,9 +76,11 @@ const Header = () => {
             {navOption}
           </ul>
         </div>
-        <p className="text-2xl font-bold lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
+        <Link
+          to="/"
+          className="text-2xl font-bold lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
           Music<span className="text-[#f1961f]">Land</span>
-        </p>
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-lg font-semibold">

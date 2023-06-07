@@ -7,9 +7,9 @@ const Home = () => {
       <Helmet>
         <title>Music Land | Home</title>
       </Helmet>
-      <div className="relative">
+      <div>
         <img src="https://i.ibb.co/TRj0sYx/6997674-1.jpg" alt="" />
-        <div className="text-end absolute top-0 right-0 lg:top-32 lg:right-8 p-3 lg:p-0 m-3 lg:m-0">
+        <div className="text-end absolute top-0 right-0 lg:top-52 lg:right-8 p-3 lg:p-0 m-3 lg:m-0">
           <h1 className="text-xl leading-5 lg:text-7xl lg:tracking-widest font-extrabold uppercase text-[#f1961f]">
             classes
             <br />
