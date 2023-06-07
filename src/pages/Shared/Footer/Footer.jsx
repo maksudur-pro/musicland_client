@@ -8,8 +8,8 @@ const Footer = () => {
         {/* todo adding logo */}
         <h1>LOGO</h1>
         <p>
-          <span className="text-2xl font-bold">
-            Music<span className="text-error">Land</span>
+          <span className="text-2xl font-bold lg:text-3xl lg:font-extrabold">
+            Music<span className="text-[#f1961f]">Land</span>
           </span>
           <br />
           Providing reliable tech since 1992

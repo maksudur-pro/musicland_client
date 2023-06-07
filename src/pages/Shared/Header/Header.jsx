@@ -7,7 +7,7 @@ const Header = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "default"
+            isActive ? "text-[#f1961f]" : "default"
           }>
           Home
         </NavLink>
@@ -16,7 +16,7 @@ const Header = () => {
         <NavLink
           to="/instructors"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "default"
+            isActive ? "text-[#f1961f]" : "default"
           }>
           Instructors
         </NavLink>
@@ -25,7 +25,7 @@ const Header = () => {
         <NavLink
           to="/classes"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "default"
+            isActive ? "text-[#f1961f]" : "default"
           }>
           Classes
         </NavLink>
@@ -34,7 +34,7 @@ const Header = () => {
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "default"
+            isActive ? "text-[#f1961f]" : "default"
           }>
           Dashboard
         </NavLink>
@@ -43,7 +43,7 @@ const Header = () => {
         <NavLink
           to="/login"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "default"
+            isActive ? "text-[#f1961f]" : "default"
           }>
           Login
         </NavLink>
@@ -76,8 +76,8 @@ const Header = () => {
             {navOption}
           </ul>
         </div>
-        <p className="text-2xl font-bold ml-[160px] lg:ml-0">
-          Music<span className="text-error">Land</span>
+        <p className="text-2xl font-bold lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
+          Music<span className="text-[#f1961f]">Land</span>
         </p>
       </div>
       <div className="navbar-end hidden lg:flex">
