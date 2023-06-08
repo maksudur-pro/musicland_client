@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useRole from "../Hooks/useRole";
 
 const Dashboard = () => {
+  const { data } = useRole();
+
   const admin = (
     <>
       <h1 className="text-center">Admin Panel</h1>
@@ -86,7 +89,9 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
-          {admin}
+          {data.role === "admin" && admin}
+          {data.role === "instructor" && instructor}
+          {data.role === "student" && student}
         </ul>
       </div>
     </div>
