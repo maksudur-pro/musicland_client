@@ -1,6 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
+import { FaUserAlt } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch(() => {});
+  };
+
   const navOption = (
     <>
       <li>
@@ -39,15 +50,32 @@ const Header = () => {
           Dashboard
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? "text-[#f1961f]" : "default"
-          }>
-          Login
+
+      {user && (
+        <img
+          title={user?.displayName}
+          src={`${user?.photoURL}`}
+          className="w-10 h-10 rounded-full"
+          alt=""
+        />
+      )}
+
+      {user ? (
+        <NavLink>
+          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+            Logout
+          </button>
         </NavLink>
-      </li>
+      ) : (
+        <>
+          <NavLink to="/login">
+            <FaUserAlt></FaUserAlt>
+          </NavLink>
+          <NavLink to="/login">
+            <button className="btn btn-sm btn-ghost">Login</button>
+          </NavLink>
+        </>
+      )}
     </>
   );
 
@@ -72,7 +100,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu font-semibold text-lg menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            className="menu font-semibold  menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             {navOption}
           </ul>
         </div>
@@ -83,7 +111,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-lg font-semibold">
+        <ul className="menu menu-horizontal px-1  font-semibold">
           {navOption}
         </ul>
       </div>

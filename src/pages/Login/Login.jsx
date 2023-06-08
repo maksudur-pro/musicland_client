@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   const {
@@ -10,10 +12,71 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const { signIn, googleAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [error, setError] = useState("");
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
-    reset();
-    console.log(data);
+    const { email, password } = data;
+    console.log(email);
+    signIn(email, password)
+      .then((result) => {
+        const loggedIn = result.user;
+        navigate(from, { replace: true });
+        reset();
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  // google signin
+
+  // const handleGoogle = () => {
+  //   googleAuth()
+  //     .then((result) => {
+  //       const googleLogged = result.user;
+  //       console.log(object);
+  //       navigate(from, { replace: true });
+  //       setError("");
+  //     })
+  //     .catch((error) => {
+  //       setError(error.message);
+  //     });
+  // };
+
+  const handleGoogle = () => {
+    googleAuth().then((result) => {
+      const user = result.user;
+      const name = user.displayName;
+      const email = user.email;
+      const saveUser = { name, email, role: "student" };
+      console.log(user);
+      // Make a POST method
+      fetch("http://localhost:5000/users/google", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          navigate(from, { replace: true });
+        })
+        .catch((error) => {
+          console.error("Error adding user:", error);
+        });
+    });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -43,12 +106,12 @@ const Login = () => {
               <p className="text-error">{errors.email?.message}</p>
             )}
           </div>
-          <div className="mb-2">
+          <div className="mb-2 relative">
             <label className="block text-sm font-semibold text-gray-800">
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               {...register("password", {
                 required: "Password is required",
                 minLength: {
@@ -60,6 +123,18 @@ const Login = () => {
               placeholder="password"
               className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-[#f1961f] focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
+            {showPassword ? (
+              <FaEyeSlash
+                className="absolute top-[70%] right-[3%] transform -translate-y-2/4 cursor-pointer"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <FaEye
+                className="absolute top-[70%] right-[3%] transform -translate-y-2/4 cursor-pointer"
+                onClick={togglePasswordVisibility}
+              />
+            )}
+
             {errors.password && (
               <p className="text-error">{errors.password?.message}</p>
             )}
@@ -67,6 +142,7 @@ const Login = () => {
           <a href="#" className="text-xs text-[#f1961f] hover:underline">
             Forget Password?
           </a>
+          <p className="text-error">{error}</p>
           <div className="mt-6">
             <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#f1961f] rounded-md hover:bg-[#f1961f] focus:outline-none focus:bg-[#f1961f]">
               Login
@@ -78,6 +154,7 @@ const Login = () => {
         </div>
         <div className="flex mt-4 gap-x-2">
           <button
+            onClick={handleGoogle}
             type="button"
             className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-[#f1961f]">
             <svg
