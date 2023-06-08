@@ -86,7 +86,7 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
-          {student}
+          {admin}
         </ul>
       </div>
     </div>
