@@ -1,8 +1,24 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    reset();
+    console.log(data);
+  };
+
+  const password = React.useRef({});
+  password.current = watch("password", "");
+
   return (
     <div>
       <div className="flex flex-col items-center  pt-6 sm:justify-center sm:pt-0 bg-gray-50">
@@ -15,7 +31,7 @@ const Register = () => {
           </a>
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="name"
@@ -26,8 +42,13 @@ const Register = () => {
                 <input
                   type="text"
                   name="name"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  placeholder="name"
+                  {...register("name", { required: "Name is required" })}
+                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
+                {errors.name && (
+                  <p className="text-error">{errors.name?.message}</p>
+                )}
               </div>
             </div>
             <div className="mt-4">
@@ -39,9 +60,16 @@ const Register = () => {
               <div className="flex flex-col items-start">
                 <input
                   type="email"
+                  placeholder="email"
                   name="email"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  {...register("email", {
+                    required: "Email Address is required",
+                  })}
+                  className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
+                {errors.email && (
+                  <p className="text-error">{errors.email?.message}</p>
+                )}
               </div>
             </div>
             <div className="mt-4">
@@ -53,9 +81,20 @@ const Register = () => {
               <div className="flex flex-col items-start">
                 <input
                   type="password"
+                  placeholder="password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
                   name="password"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
+                {errors.password && (
+                  <p className="text-error">{errors.password?.message}</p>
+                )}
               </div>
             </div>
             <div className="mt-4">
@@ -68,8 +107,18 @@ const Register = () => {
                 <input
                   type="password"
                   name="password_confirmation"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  {...register("password_confirmation", {
+                    required: "Confirm Password is required",
+                    validate: (value) =>
+                      value === password.current || "Passwords do not match",
+                  })}
+                  className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
+                {errors.password_confirmation && (
+                  <p className="text-error">
+                    {errors.password_confirmation?.message}
+                  </p>
+                )}
               </div>
             </div>
             <a href="#" className="text-xs text-[#f1961f] hover:underline">

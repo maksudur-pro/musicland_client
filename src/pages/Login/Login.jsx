@@ -1,10 +1,23 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    reset();
+    console.log(data);
+  };
+
   return (
-    <div className="flex flex-col justify-center overflow-hidden">
+    <div>
       <Helmet>
         <title>Music Land | Login</title>
       </Helmet>
@@ -12,16 +25,23 @@ const Login = () => {
         <h1 className="text-3xl font-semibold text-center text-[#f1961f] uppercase">
           Login
         </h1>
-        <form className="mt-6">
+        <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-2">
             <label className="block text-sm font-semibold text-gray-800">
               Email
             </label>
             <input
               type="email"
+              {...register("email", {
+                required: "Email Address is required",
+              })}
+              name="email"
               placeholder="email"
               className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-[#f1961f] focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
+            {errors.email && (
+              <p className="text-error">{errors.email?.message}</p>
+            )}
           </div>
           <div className="mb-2">
             <label className="block text-sm font-semibold text-gray-800">
@@ -29,9 +49,20 @@ const Login = () => {
             </label>
             <input
               type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+              name="password"
               placeholder="password"
               className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-[#f1961f] focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
+            {errors.password && (
+              <p className="text-error">{errors.password?.message}</p>
+            )}
           </div>
           <a href="#" className="text-xs text-[#f1961f] hover:underline">
             Forget Password?
