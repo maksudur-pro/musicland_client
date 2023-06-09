@@ -35,21 +35,6 @@ const Login = () => {
       });
   };
 
-  // google signin
-
-  // const handleGoogle = () => {
-  //   googleAuth()
-  //     .then((result) => {
-  //       const googleLogged = result.user;
-  //       console.log(object);
-  //       navigate(from, { replace: true });
-  //       setError("");
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //     });
-  // };
-
   const handleGoogle = () => {
     googleAuth().then((result) => {
       const user = result.user;

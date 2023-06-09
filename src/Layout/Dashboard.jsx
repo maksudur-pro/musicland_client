@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useRole from "../Hooks/useRole";
+import { FaBars } from "react-icons/fa";
 
 const Dashboard = () => {
   const { data } = useRole();
@@ -79,10 +80,16 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="drawer drawer-open">
+    <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
+        <label
+          htmlFor="my-drawer-2"
+          className="btn drawer-button ml-[200px] lg:hidden">
+          <FaBars />
+        </label>
+        <h1 className="text-2xl font-bold text-center">Dashboard</h1>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">

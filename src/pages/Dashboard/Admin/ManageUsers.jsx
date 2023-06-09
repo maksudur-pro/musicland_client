@@ -51,18 +51,21 @@ const ManageUsers = () => {
       });
   };
 
-  // const handleDelete = (user) => {
-  //   axios.delete(`http://localhost:5000/users/${user._id}`)
-  //     .then(({ data }) => {
-  //       console.log(data);
-  //       if (data.deletedCount > 0) {
-  //         refetch();
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  // todo delete confirmation add & student btn add
+
+  const handleDelete = (user) => {
+    axios
+      .delete(`http://localhost:5000/users/${user._id}`)
+      .then(({ data }) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="w-full">
