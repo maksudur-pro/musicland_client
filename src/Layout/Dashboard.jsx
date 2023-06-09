@@ -99,6 +99,16 @@ const Dashboard = () => {
           {data.role === "admin" && admin}
           {data.role === "instructor" && instructor}
           {data.role === "student" && student}
+          <div className="divider"></div>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-[#f1961f]" : "default"
+              }>
+              Home
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>
