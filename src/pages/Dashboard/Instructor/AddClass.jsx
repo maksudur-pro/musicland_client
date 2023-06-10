@@ -9,6 +9,7 @@ const AddClass = () => {
 
   const handleAddClass = async (data) => {
     const { courseName, classImg, seats, price } = data;
+    enrolled = 0;
     const newData = {
       instructor_name: user?.displayName,
       email: user?.email,
@@ -17,6 +18,7 @@ const AddClass = () => {
       seats: parseFloat(seats),
       price: parseFloat(price),
       status: "pending",
+      totalEnrolled: parseFloat(enrolled),
     };
     console.log(newData);
     try {

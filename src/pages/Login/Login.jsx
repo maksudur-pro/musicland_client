@@ -40,7 +40,8 @@ const Login = () => {
       const user = result.user;
       const name = user.displayName;
       const email = user.email;
-      const saveUser = { name, email, role: "student" };
+      const photo = user.photoURL;
+      const saveUser = { name, email, role: "student", photo };
       console.log(user);
       // Make a POST method
       fetch("http://localhost:5000/users/google", {

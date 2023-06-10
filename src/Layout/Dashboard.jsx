@@ -5,7 +5,6 @@ import { FaBars } from "react-icons/fa";
 
 const Dashboard = () => {
   const { data } = useRole();
-
   const admin = (
     <>
       <h1 className="text-center">Admin Panel</h1>
