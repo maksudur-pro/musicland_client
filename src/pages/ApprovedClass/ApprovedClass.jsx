@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ApprovedClasses = () => {
   const [data, setData] = useState([]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     fetchData();
@@ -17,9 +23,50 @@ const ApprovedClasses = () => {
     }
   };
 
-  const handleSelect = (classObj) => {
-    // Perform actions on class selection
-    console.log("Selected class:", classObj);
+  const handleSelect = (data) => {
+    if (user && user.email) {
+      const cartItem = {
+        classId: data._id,
+        courseName: data.courseName,
+        classImg: data.classImg,
+        price: data.price,
+        seats: data.seats,
+        email: user.email,
+      };
+      axios.post("http://localhost:5000/carts", cartItem).then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Course added on your class page",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        if (response.data.message) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Course already added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "Please login to select the course",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
   };
 
   return (

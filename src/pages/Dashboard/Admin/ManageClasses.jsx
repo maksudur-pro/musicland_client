@@ -117,8 +117,13 @@ const ManageClasses = () => {
                 {/* feedback modal popup trigger button */}
                 <button
                   title="Feedback"
-                  className="btn btn-sm btn-primary"
-                  onClick={() => openFeedbackModal(classObj)}>
+                  className={`btn btn-sm ${
+                    classObj.status === "approved"
+                      ? "btn-disabled"
+                      : "btn-primary"
+                  }`}
+                  onClick={() => openFeedbackModal(classObj)}
+                  disabled={classObj.status === "approved"}>
                   <FaComments />
                 </button>
               </div>
