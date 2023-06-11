@@ -4,7 +4,6 @@ import { MdPendingActions } from "react-icons/md";
 
 const MyClass = () => {
   const [data] = useInstructorClass();
-  console.log(data);
 
   return (
     // <div>
