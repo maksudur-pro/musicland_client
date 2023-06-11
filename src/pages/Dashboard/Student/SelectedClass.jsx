@@ -1,17 +1,33 @@
+import Swal from "sweetalert2";
 import useSelectClass from "../../../Hooks/useSelectClass";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
-  const [cart] = useSelectClass();
-  console.log(cart);
+  const [classes, refetch] = useSelectClass();
 
-  const handlePay = (classId) => {
-    // Handle payment logic here
-    console.log(`Paying for class with ID: ${classId}`);
-  };
-
-  const handleDelete = (classId) => {
-    // Handle deletion logic here
-    console.log(`Deleting class with ID: ${classId}`);
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -20,7 +36,7 @@ const SelectedClass = () => {
         My Selected Classes
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cart.map((classObj) => (
+        {classes.map((classObj) => (
           <div key={classObj._id} className="card shadow-lg">
             <img
               src={classObj.classImg}
@@ -33,14 +49,14 @@ const SelectedClass = () => {
               <p className="text-gray-500">Price: {classObj.price}</p>
               <p className="text-gray-500">Seats: {classObj.seats}</p>
               <div className="flex justify-between mt-4">
-                <button
-                  className="btn btn-sm bg-yellow-500 hover:bg-yellow-600"
-                  onClick={() => handlePay(classObj.classId)}>
-                  Pay
-                </button>
+                <Link to={`/dashboard/payment/${classObj._id}`}>
+                  <button className="btn btn-sm bg-yellow-500 hover:bg-yellow-600">
+                    Pay
+                  </button>
+                </Link>
                 <button
                   className="btn btn-sm btn-danger"
-                  onClick={() => handleDelete(classObj.classId)}>
+                  onClick={() => handleDelete(classObj)}>
                   Delete
                 </button>
               </div>

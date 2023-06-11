@@ -12,6 +12,7 @@ import SelectedClass from "../pages/Dashboard/Student/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass";
 import ApprovedClasses from "../pages/ApprovedClass/ApprovedClass";
 import AllInstructor from "../pages/AllInstructor/AllInstructor";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: "payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/carts/${params.id}`),
+      },
       // admin panel
       {
         path: "manage_user",
