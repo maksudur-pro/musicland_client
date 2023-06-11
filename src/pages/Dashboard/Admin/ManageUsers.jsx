@@ -2,6 +2,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -69,6 +70,9 @@ const ManageUsers = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Admin | Manage Users</title>
+      </Helmet>
       <h3 className="text-3xl font-semibold my-4">
         Total Users: {users.length}
       </h3>

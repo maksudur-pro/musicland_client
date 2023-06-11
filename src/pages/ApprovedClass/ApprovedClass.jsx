@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ApprovedClasses = () => {
   const [data, setData] = useState([]);
@@ -71,6 +72,9 @@ const ApprovedClasses = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Music Land | Classes</title>
+      </Helmet>
       <h1 className="text-3xl text-center font-bold mb-4">All Classes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((classObj) => (

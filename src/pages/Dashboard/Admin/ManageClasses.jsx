@@ -3,6 +3,7 @@ import { FaCheck, FaTimes, FaComments, FaCircle } from "react-icons/fa";
 import UseClass from "../../../Hooks/UseClass";
 import axios from "axios";
 import { MdPendingActions } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
   const [data, refetch] = UseClass();
@@ -59,6 +60,9 @@ const ManageClasses = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin | Manage Classes</title>
+      </Helmet>
       <div>
         <h1 className="text-3xl font-bold mb-4">Manage Classes</h1>
         {/* classes cards */}

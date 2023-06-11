@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
   const { user } = useAuth();
@@ -47,6 +48,9 @@ const AddClass = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <Helmet>
+        <title>Instructor | Add Class</title>
+      </Helmet>
       <div className="max-w-4xl w-full mx-4 rounded-md shadow-lg">
         <div className="bg-blue-400 px-6 py-4 rounded-t-md">
           <h2 className="text-xl font-bold text-white text-center">

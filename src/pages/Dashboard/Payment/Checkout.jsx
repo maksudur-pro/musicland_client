@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./checkout.css";
 import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = ({ price }) => {
   const stripe = useStripe();
@@ -81,6 +82,9 @@ const Checkout = ({ price }) => {
 
   return (
     <>
+      <Helmet>
+        <title>Music Land | Checkout</title>
+      </Helmet>
       <form className="w-2/3 m-8" onSubmit={handleSubmit}>
         <CardElement
           options={{

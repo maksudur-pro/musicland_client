@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useSelectClass from "../../../Hooks/useSelectClass";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const SelectedClass = () => {
   const [classes, refetch] = useSelectClass();
@@ -32,6 +33,9 @@ const SelectedClass = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Student | Select Class</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-6 text-center">
         My Selected Classes
       </h1>

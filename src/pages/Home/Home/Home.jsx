@@ -7,26 +7,16 @@ const Home = () => {
       <Helmet>
         <title>Music Land | Home</title>
       </Helmet>
-      <div>
-        <img src="https://i.ibb.co/TRj0sYx/6997674-1.jpg" alt="" />
-        <div className="text-end absolute top-0 right-0 lg:top-52 lg:right-8 p-3 lg:p-0 m-3 lg:m-0">
-          <h1 className="text-xl leading-5 lg:text-7xl lg:tracking-widest font-extrabold uppercase text-[#f1961f]">
-            classes
-            <br />
-            for all
-            <br />
-            ages
-          </h1>
-          <h2 className="text-[4px] lg:text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod <br /> tempor incididunt ut labore et dolore magna aliqua.
-            Quis ipsum.
-          </h2>
-          <button className="btn btn-outline bg-slate-100 border-0 border-b-4 border-[#f1961f] lg:mt-4">
-            See All
+
+      <section className="bg-indigo-900 text-white py-20">
+        <div className="container mx-auto flex flex-col items-center">
+          <h1 className="text-5xl font-bold mb-6">Join Our Summer Camp</h1>
+          <p className="text-xl mb-8">Discover the Joy of Playing Music</p>
+          <button className="bg-white text-indigo-900 px-6 py-3 rounded-full shadow-md font-semibold hover:bg-indigo-800">
+            Enroll Now
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -50,37 +50,11 @@ const Header = () => {
           Dashboard
         </NavLink>
       </li>
-
-      {user && (
-        <img
-          title={user?.displayName}
-          src={`${user?.photoURL}`}
-          className="w-10 h-10 rounded-full"
-          alt=""
-        />
-      )}
-
-      {user ? (
-        <NavLink>
-          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
-            Logout
-          </button>
-        </NavLink>
-      ) : (
-        <>
-          <NavLink to="/login">
-            <FaUserAlt></FaUserAlt>
-          </NavLink>
-          <NavLink to="/login">
-            <button className="btn btn-sm btn-ghost">Login</button>
-          </NavLink>
-        </>
-      )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 my-container">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -100,20 +74,39 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu font-semibold  menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             {navOption}
           </ul>
         </div>
         <Link
           to="/"
-          className="text-2xl font-bold lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
+          className="text-2xl font-bold hidden lg:block  lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
           Music<span className="text-[#f1961f]">Land</span>
         </Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1  font-semibold">
-          {navOption}
-        </ul>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-4">{navOption}</ul>
+      </div>
+      <div className="navbar-end">
+        {user ? (
+          <img
+            title={user?.displayName}
+            src={`${user?.photoURL}`}
+            className="w-10 h-10 rounded-full"
+            alt=""
+          />
+        ) : (
+          <FaUserAlt></FaUserAlt>
+        )}
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm btn-ghost">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 import { FaCircle } from "react-icons/fa";
 import useInstructorClass from "../../../Hooks/useInstructorClass";
 import { MdPendingActions } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 const MyClass = () => {
   const [data] = useInstructorClass();
 
   return (
     <div>
+      <Helmet>
+        <title>Instructor | My Class</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="md:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
