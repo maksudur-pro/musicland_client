@@ -9,7 +9,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 const Payment = () => {
   const data = useLoaderData();
-  const price = parseFloat(data.price);
+
   return (
     <div>
       <Helmet>
@@ -17,7 +17,7 @@ const Payment = () => {
       </Helmet>
       <h1 className="text-center">payment</h1>
       <Elements stripe={stripePromise}>
-        <Checkout price={price} />
+        <Checkout data={data} />
       </Elements>
     </div>
   );

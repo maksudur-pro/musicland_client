@@ -48,7 +48,7 @@ const SelectedClass = () => {
               className="w-full h-40 object-cover"
             />
             <div className="card-body">
-              <h3 className="text-xl font-bold">{classObj.name}</h3>
+              <h3 className="text-xl font-bold">{classObj.courseName}</h3>
 
               <p className="text-gray-500">Price: {classObj.price}</p>
               <p className="text-gray-500">Seats: {classObj.seats}</p>

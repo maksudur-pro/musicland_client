@@ -4,10 +4,14 @@ import "./checkout.css";
 import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Checkout = ({ price }) => {
+const Checkout = ({ data }) => {
+  const { price, classId, seats, totalEnrolled, _id } = data;
   const stripe = useStripe();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -76,7 +80,34 @@ const Checkout = ({ price }) => {
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
       // save payment information
-      // todo added database
+      const payment = {
+        transactionId: paymentIntent.id,
+        date: new Date(),
+        seats: seats - 1,
+        payment: true,
+      };
+
+      axios
+        .put(`http://localhost:5000/payments/${_id}`, payment)
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            const update = {
+              totalEnrolled: totalEnrolled + 1,
+              seats: seats - 1,
+            };
+            axios
+              .put(`http://localhost:5000/classUpdates/${classId}`, update)
+              .then((res) => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
+                  // display confirm sweet alert
+                  Swal.fire("Good job!", "Payment successful", "success");
+                  navigate("/dashboard/enrolled");
+                  setProcessing(true);
+                }
+              });
+          }
+        });
     }
   };
 
@@ -93,17 +124,17 @@ const Checkout = ({ price }) => {
                 fontSize: "16px",
                 color: "#424770",
                 "::placeholder": {
-                  color: "#aab7c4",
+                  color: "#f1961f",
                 },
               },
               invalid: {
-                color: "#9e2146",
+                color: "#f1961f",
               },
             },
           }}
         />
         <button
-          className="btn btn-warning btn-sm"
+          className="btn btn-warning btn-sm mt-3"
           type="submit"
           disabled={!stripe || !clientSecret || processing}>
           Pay

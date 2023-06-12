@@ -92,19 +92,23 @@ const Header = () => {
           <img
             title={user?.displayName}
             src={`${user?.photoURL}`}
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full mr-3"
             alt=""
           />
         ) : (
-          <FaUserAlt></FaUserAlt>
+          <FaUserAlt className="mr-3"></FaUserAlt>
         )}
         {user ? (
-          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+          <button
+            onClick={handleLogout}
+            className="btn btn-sm bg-[#f1961f] hover:bg-[#f59d2a] mb-2">
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button className="btn btn-sm btn-ghost">Login</button>
+            <button className="btn btn-sm bg-[#f1961f] mb-2 hover:bg-[#f59d2a]">
+              Login
+            </button>
           </Link>
         )}
       </div>
