@@ -1,0 +1,9 @@
+- Website name: FluentFun Logo: Circle of hands
+- Features:
+- Secure login ensured for student, admin and , instructors.
+- data will show based on their role.
+- admin can update role or delete a user
+- instructors can add a class and view their class status
+- admin can update class status
+- React router, AOS, Framer Motion,React HookForm, daisyUI, Tailwind css, tanStack query
+- live link:

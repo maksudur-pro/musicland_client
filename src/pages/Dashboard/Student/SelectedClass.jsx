@@ -40,33 +40,35 @@ const SelectedClass = () => {
         My Selected Classes
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {classes.map((classObj) => (
-          <div key={classObj._id} className="card shadow-lg">
-            <img
-              src={classObj.classImg}
-              alt=""
-              className="w-full h-40 object-cover"
-            />
-            <div className="card-body">
-              <h3 className="text-xl font-bold">{classObj.courseName}</h3>
+        {classes.map((classObj) =>
+          classObj.payment === false ? (
+            <div key={classObj._id} className="card shadow-lg">
+              <img
+                src={classObj.classImg}
+                alt=""
+                className="w-full h-40 object-cover"
+              />
+              <div className="card-body">
+                <h3 className="text-xl font-bold">{classObj.courseName}</h3>
 
-              <p className="text-gray-500">Price: {classObj.price}</p>
-              <p className="text-gray-500">Seats: {classObj.seats}</p>
-              <div className="flex justify-between mt-4">
-                <Link to={`/dashboard/payment/${classObj._id}`}>
-                  <button className="btn btn-sm bg-yellow-500 hover:bg-yellow-600">
-                    Pay
+                <p className="text-gray-500">Price: {classObj.price}</p>
+                <p className="text-gray-500">Seats: {classObj.seats}</p>
+                <div className="flex justify-between mt-4">
+                  <Link to={`/dashboard/payment/${classObj._id}`}>
+                    <button className="btn btn-sm bg-yellow-500 hover:bg-yellow-600">
+                      Pay
+                    </button>
+                  </Link>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => handleDelete(classObj)}>
+                    Delete
                   </button>
-                </Link>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => handleDelete(classObj)}>
-                  Delete
-                </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ) : null
+        )}
       </div>
     </div>
   );
