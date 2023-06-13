@@ -13,6 +13,7 @@ import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass";
 import ApprovedClasses from "../pages/ApprovedClass/ApprovedClass";
 import AllInstructor from "../pages/AllInstructor/AllInstructor";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "payment/:id",

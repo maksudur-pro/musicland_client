@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const ApprovedClasses = () => {
-  const [data, setData] = useState([]);
+  const [classes, setClasses] = useState([]);
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +20,7 @@ const ApprovedClasses = () => {
       const response = await axios.get(
         "https://music-land-server.vercel.app/approveClass"
       );
-      setData(response.data);
+      setClasses(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -81,30 +81,33 @@ const ApprovedClasses = () => {
       <Helmet>
         <title>Music Land | Classes</title>
       </Helmet>
-      <h1 className="text-3xl text-center font-bold mb-4">All Classes</h1>
+      <div className="mx-auto text-center md:w-4/12 my-10">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          All Classes
+        </h3>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((classObj) => (
+        {classes.map((classObj) => (
           <div
             key={classObj._id}
             className="card shadow-lg flex flex-col justify-between">
             <img
               src={classObj.classImg}
               alt={classObj.courseName}
-              className="w-full rounded-xl object-cover mb-4"
+              className="w-full rounded-xl object-cover"
             />
             <div className="card-body">
               <h2 className="text-xl font-bold mb-2">{classObj.courseName}</h2>
-              <p className="mb-2">Instructor: {classObj.instructor_name}</p>
-              <p className="mb-2">Email: {classObj.email}</p>
-              <p className="mb-2">Available seats: {classObj.seats}</p>
-              <p className="mb-2">Enrolled Student: {classObj.totalEnrolled}</p>
+              <p className="">Instructor: {classObj.instructor_name}</p>
+              <p className="">Available seats: {classObj.seats}</p>
+              <p className="">Enrolled Student: {classObj.totalEnrolled}</p>
             </div>
             <div className="flex justify-between items-center p-4">
               <p className="mb-2">Price: ${classObj.price}</p>
               <button
-                className="btn btn-primary"
+                className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
                 onClick={() => handleSelect(classObj)}>
-                Select
+                Add Class
               </button>
             </div>
           </div>
