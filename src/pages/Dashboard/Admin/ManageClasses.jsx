@@ -11,7 +11,9 @@ const ManageClasses = () => {
 
   const handleApprove = async (classId) => {
     try {
-      await axios.patch(`http://localhost:5000/classes/approve/${classId}`);
+      await axios.patch(
+        `https://music-land-server.vercel.app/classes/approve/${classId}`
+      );
       refetch(); // Refetch the updated data
     } catch (error) {
       console.error("Error approving class:", error);
@@ -20,7 +22,9 @@ const ManageClasses = () => {
 
   const handleDeny = async (classId) => {
     try {
-      await axios.patch(`http://localhost:5000/classes/deny/${classId}`);
+      await axios.patch(
+        `https://music-land-server.vercel.app/classes/deny/${classId}`
+      );
       refetch(); // Refetch the updated data
     } catch (error) {
       console.error("Error denying class:", error);
@@ -33,9 +37,12 @@ const ManageClasses = () => {
       return;
     }
     try {
-      await axios.post(`http://localhost:5000/classes/feedback/${classId}`, {
-        feedback,
-      });
+      await axios.post(
+        `https://music-land-server.vercel.app/classes/feedback/${classId}`,
+        {
+          feedback,
+        }
+      );
       refetch(); // Refetch the updated data
     } catch (error) {
       console.error("Error sending feedback:", error);

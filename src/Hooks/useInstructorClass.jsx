@@ -8,7 +8,7 @@ const useInstructorClass = () => {
     enabled: !loading && !!user?.email,
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/class?email=${user?.email}`
+        `https://music-land-server.vercel.app/class?email=${user?.email}`
       );
       const result = await res.json();
       return result;

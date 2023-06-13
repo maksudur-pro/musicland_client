@@ -9,7 +9,11 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 const Payment = () => {
   const data = useLoaderData();
-
+  // const _id = data._id;
+  // const totalEnrolled = data.totalEnrolled;
+  // const price = data.price;
+  // const classId = data.classId;
+  // const seats = data.seats;
   return (
     <div>
       <Helmet>

@@ -17,7 +17,9 @@ const ApprovedClasses = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/approveClass");
+      const response = await axios.get(
+        "https://music-land-server.vercel.app/approveClass"
+      );
       setData(response.data);
     } catch (error) {
       console.log(error);
@@ -36,26 +38,28 @@ const ApprovedClasses = () => {
         payment: false,
         email: user.email,
       };
-      axios.post("http://localhost:5000/carts", cartItem).then((response) => {
-        if (response.data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Course added on your class page",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-        if (response.data.message) {
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Course already added",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
+      axios
+        .post("https://music-land-server.vercel.app/carts", cartItem)
+        .then((response) => {
+          if (response.data.insertedId) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Course added on your class page",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+          if (response.data.message) {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Course already added",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
     } else {
       Swal.fire({
         title: "Please login to select the course",

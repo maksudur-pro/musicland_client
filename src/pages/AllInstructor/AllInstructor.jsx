@@ -7,7 +7,7 @@ const AllInstructor = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/instructors")
+      .get("https://music-land-server.vercel.app/instructors")
       .then((response) => setInstructors(response.data))
       .catch((error) => console.log(error));
   }, []);

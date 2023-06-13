@@ -23,9 +23,12 @@ const AddClass = () => {
     };
     console.log(newData);
     try {
-      const response = await axios.post("http://localhost:5000/addClass", {
-        ...newData,
-      });
+      const response = await axios.post(
+        "https://music-land-server.vercel.app/addClass",
+        {
+          ...newData,
+        }
+      );
 
       if (response.status === 200) {
         reset();

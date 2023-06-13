@@ -21,7 +21,9 @@ const Checkout = ({ data }) => {
   useEffect(() => {
     if (price > 0) {
       axios
-        .post("http://localhost:5000/create-payment-intent", { price })
+        .post("https://music-land-server.vercel.app/create-payment-intent", {
+          price,
+        })
         .then((res) => {
           //   console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
@@ -51,7 +53,7 @@ const Checkout = ({ data }) => {
     });
 
     if (error) {
-      //   console.log("[error]", error);
+      console.log("[error]", error);
       setCardError(error.message);
     } else {
       setCardError("");
@@ -88,7 +90,7 @@ const Checkout = ({ data }) => {
       };
 
       axios
-        .put(`http://localhost:5000/payments/${_id}`, payment)
+        .put(`https://music-land-server.vercel.app/payments/${_id}`, payment)
         .then((res) => {
           if (res.data.modifiedCount > 0) {
             const update = {
@@ -96,7 +98,10 @@ const Checkout = ({ data }) => {
               seats: seats - 1,
             };
             axios
-              .put(`http://localhost:5000/classUpdates/${classId}`, update)
+              .put(
+                `https://music-land-server.vercel.app/classUpdates/${classId}`,
+                update
+              )
               .then((res) => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
@@ -140,7 +145,7 @@ const Checkout = ({ data }) => {
           Pay
         </button>
       </form>
-      {cardError && <p className="text-error ml-8">{cardError}</p>}
+      {cardError && <p className="text-error ml-8">{cardError.message}</p>}
       {transactionId && (
         <p className="text-success ml-8">
           Transaction complete with transactionId : {transactionId}

@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         path: "payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/carts/${params.id}`),
+          fetch(`https://music-land-server.vercel.app/carts/${params.id}`),
       },
       // admin panel
       {

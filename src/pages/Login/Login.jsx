@@ -44,7 +44,7 @@ const Login = () => {
       const saveUser = { name, email, role: "student", photo };
       console.log(user);
       // Make a POST method
-      fetch("http://localhost:5000/users/google", {
+      fetch("https://music-land-server.vercel.app/users/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
