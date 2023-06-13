@@ -14,7 +14,7 @@ const Header = () => {
 
   const navOption = (
     <>
-      <li>
+      <li className="text-xl">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -23,7 +23,7 @@ const Header = () => {
           Home
         </NavLink>
       </li>
-      <li>
+      <li className="text-xl">
         <NavLink
           to="/instructors"
           className={({ isActive }) =>
@@ -32,7 +32,7 @@ const Header = () => {
           Instructors
         </NavLink>
       </li>
-      <li>
+      <li className="text-xl">
         <NavLink
           to="/classes"
           className={({ isActive }) =>
@@ -41,7 +41,7 @@ const Header = () => {
           Classes
         </NavLink>
       </li>
-      <li>
+      <li className="text-xl">
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
@@ -96,17 +96,17 @@ const Header = () => {
             alt=""
           />
         ) : (
-          <FaUserAlt className="mr-3"></FaUserAlt>
+          <FaUserAlt className="mr-3 w-6 h-6"></FaUserAlt>
         )}
         {user ? (
           <button
             onClick={handleLogout}
-            className="btn btn-sm bg-[#f1961f] hover:bg-[#f59d2a] mb-2">
+            className="btn text-white bg-[#f1961f] hover:bg-[#f59d2a] mb-2">
             Logout
           </button>
         ) : (
           <Link to="/login">
-            <button className="btn btn-sm bg-[#f1961f] mb-2 hover:bg-[#f59d2a]">
+            <button className="btn  text-white bg-[#f1961f] mb-2 hover:bg-[#f59d2a]">
               Login
             </button>
           </Link>

@@ -19,17 +19,25 @@ const AllInstructor = () => {
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:py-20">
         {instructors.map((instructor) => (
-          <div key={instructor._id} className="card shadow-lg">
-            {instructor.photo && (
+          <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl">
+            <figure>
               <img
                 src={instructor.photo}
-                alt="Instructor"
-                className="w-full h-60 object-cover"
+                className="w-full h-96"
+                alt="Teacher"
               />
-            )}
+            </figure>
             <div className="card-body">
-              <h3 className="text-xl font-bold">{instructor.name}</h3>
-              <p className="text-gray-600">{instructor.email}</p>
+              <h2 className="card-title">{instructor.name}</h2>
+              <p>{instructor.email}</p>
+              <p>
+                Lorem ipsum dolor sit amet, con amit sectetur adipisicing elit.
+              </p>
+              <div className="card-actions">
+                <div className="badge bg-[#f1961f] hover:bg-[#e99e3c] p-4 cursor-pointer text-white badge-outline">
+                  View Details
+                </div>
+              </div>
             </div>
           </div>
         ))}
