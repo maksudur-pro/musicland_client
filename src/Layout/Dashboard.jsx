@@ -75,6 +75,15 @@ const Dashboard = () => {
           Enrolled class
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/dashboard/history"
+          className={({ isActive }) =>
+            isActive ? "text-[#f1961f]" : "default"
+          }>
+          Payment History
+        </NavLink>
+      </li>
     </>
   );
 

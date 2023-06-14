@@ -21,6 +21,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const { name, email, password, photo } = data;
+    setError("");
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -168,21 +169,16 @@ const Register = () => {
                   placeholder="password"
                   {...register("password", {
                     required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters",
-                    },
-                    pattern: {
-                      value: /^(?=.*[@#$%^&+=])(?=.*[A-Z]) $/,
-                      message:
-                        "Please give at least one capital letter & one special character",
-                    },
+                    pattern: /^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{6,}$/,
                   })}
                   name="password"
                   className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
                 {errors.password && (
-                  <p className="text-error">{errors.password?.message}</p>
+                  <p className="text-error">
+                    Password must be at least one capital letter, one special
+                    character & minimum 6 characters
+                  </p>
                 )}
               </div>
             </div>

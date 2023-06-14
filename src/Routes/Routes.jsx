@@ -14,6 +14,8 @@ import ApprovedClasses from "../pages/ApprovedClass/ApprovedClass";
 import AllInstructor from "../pages/AllInstructor/AllInstructor";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
+import History from "../pages/Dashboard/Student/History";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +85,14 @@ export const router = createBrowserRouter([
         path: "enrolled",
         element: <EnrolledClass></EnrolledClass>,
       },
+      {
+        path: "history",
+        element: <History></History>,
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);

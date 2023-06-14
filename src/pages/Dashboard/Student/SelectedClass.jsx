@@ -46,7 +46,7 @@ const SelectedClass = () => {
               <img
                 src={classObj.classImg}
                 alt=""
-                className="w-full h-40 object-cover"
+                className="w-full rounded object-cover"
               />
               <div className="card-body">
                 <h3 className="text-xl font-bold">{classObj.courseName}</h3>

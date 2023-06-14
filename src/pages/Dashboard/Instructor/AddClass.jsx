@@ -55,7 +55,7 @@ const AddClass = () => {
         <title>Instructor | Add Class</title>
       </Helmet>
       <div className="max-w-4xl w-full mx-4 rounded-md shadow-lg">
-        <div className="bg-blue-400 px-6 py-4 rounded-t-md">
+        <div className="bg-[#f1961f] px-6 py-4 rounded-t-md">
           <h2 className="text-xl font-bold text-white text-center">
             Add Class
           </h2>
@@ -141,7 +141,7 @@ const AddClass = () => {
           <div className="flex justify-end mt-6">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+              className="text-white bg-[#f1961f] hover:bg-[#f59d2a] font-bold py-2 px-4 rounded">
               Submit
             </button>
           </div>

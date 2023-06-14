@@ -19,7 +19,7 @@ const EnrolledClass = () => {
   }, []);
 
   return (
-    <div className="card-container grid grid-cols-3">
+    <div className="card-container grid grid-cols-1 lg:grid-cols-3 mt-10">
       {classes.map((enrolledClass) =>
         enrolledClass.payment === true ? (
           <div
@@ -49,14 +49,11 @@ const EnrolledClass = () => {
               <p className="flex items-center text-gray-500 mb-2">
                 <FaDollarSign className="mr-2" /> Price: ${enrolledClass.price}
               </p>
-              <p className="flex items-center text-gray-500 mb-2">
-                <FaClock className="mr-2" /> Status: {enrolledClass.status}
-              </p>
-              <p className="flex items-center text-gray-500 mb-2">
-                <FaUsers className="mr-2" /> Enrolled Students:{" "}
-                {enrolledClass.enrolledStudent}
-              </p>
-              <div className="flex justify-end"></div>
+              <div className="flex justify-end">
+                <button className="btn  text-white bg-[#f1961f] mb-2 hover:bg-[#f59d2a]">
+                  Open
+                </button>
+              </div>
             </div>
           </div>
         ) : null
