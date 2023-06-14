@@ -72,24 +72,27 @@ const MyClass = () => {
           </h2>
           <div className="divider"></div>
           <div>
-            {data.map((classObj) => (
-              <div
-                key={classObj?._id}
-                className="bg-white px-5 mb-10 text-center shadow-md rounded-lg">
-                {classObj?.feedback && (
-                  <div>
-                    <p>
-                      <span className="font-bold">Class Name:</span>{" "}
-                      {classObj?.courseName}
-                    </p>
-                    <p>
-                      <span className="font-bold">Feedback: </span>{" "}
-                      {classObj?.feedback}
-                    </p>
+            {data.map(
+              (classObj) =>
+                classObj.status === "denied" && (
+                  <div
+                    key={classObj?._id}
+                    className="bg-white px-5 mb-10 text-center shadow-md rounded-lg">
+                    {classObj?.feedback && (
+                      <div>
+                        <p>
+                          <span className="font-bold">Class Name:</span>{" "}
+                          {classObj?.courseName}
+                        </p>
+                        <p>
+                          <span className="font-bold">Feedback: </span>{" "}
+                          {classObj?.feedback}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+                )
+            )}
           </div>
         </div>
       </div>

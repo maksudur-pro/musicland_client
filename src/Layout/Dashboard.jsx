@@ -1,7 +1,19 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useRole from "../Hooks/useRole";
-import { FaBars } from "react-icons/fa";
+import {
+  FaAddressBook,
+  FaAddressCard,
+  FaBars,
+  FaDAndD,
+  FaHistory,
+  FaHome,
+  FaQuoteRight,
+  FaUserAlt,
+  FaUserFriends,
+  FaUserGraduate,
+  FaVideo,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const { data } = useRole();
@@ -15,7 +27,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Manage User
+          <FaUserAlt></FaUserAlt> Manage User
         </NavLink>
       </li>
       <li>
@@ -24,7 +36,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Manage Class
+          <FaUserFriends></FaUserFriends> Manage Class
         </NavLink>
       </li>
     </>
@@ -39,7 +51,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Add Class
+          <FaAddressBook></FaAddressBook> Add Class
         </NavLink>
       </li>
       <li>
@@ -48,7 +60,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          My Class
+          <FaAddressCard></FaAddressCard> My Class
         </NavLink>
       </li>
     </>
@@ -63,7 +75,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Selected class
+          <FaUserGraduate></FaUserGraduate> Selected class
         </NavLink>
       </li>
       <li>
@@ -72,7 +84,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Enrolled class
+          <FaVideo></FaVideo> Enrolled class
         </NavLink>
       </li>
       <li>
@@ -81,7 +93,7 @@ const Dashboard = () => {
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>
-          Payment History
+          <FaHistory></FaHistory> Payment History
         </NavLink>
       </li>
     </>
@@ -113,7 +125,7 @@ const Dashboard = () => {
               className={({ isActive }) =>
                 isActive ? "text-[#f1961f]" : "default"
               }>
-              Home
+              <FaHome></FaHome> Home
             </NavLink>
           </li>
         </ul>

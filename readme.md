@@ -1,9 +1,9 @@
-- Website name: FluentFun Logo: Circle of hands
-- Features:
+- Website name: MusicLand
+- Features: AIOX, Firebase, FramerMotion, Swiper, Stripe, Lottie React, React Hook Form, AOS, React Helmet, React LazyLoad, Sweet Alert.
 - Secure login ensured for student, admin and , instructors.
-- data will show based on their role.
-- admin can update role or delete a user
-- instructors can add a class and view their class status
-- admin can update class status
+- Data will show based on their role.
+- Admin can update role or delete a user
+- Instructors can add a class and view their class status
+- Admin can update class status
 - React router, AOS, Framer Motion,React HookForm, daisyUI, Tailwind css, tanStack query
-- live link:
+- live link: 

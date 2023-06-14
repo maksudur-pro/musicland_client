@@ -49,11 +49,11 @@ const AddClass = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="mt-10 bg-gray-100 flex items-center justify-center">
       <Helmet>
         <title>Instructor | Add Class</title>
       </Helmet>
-      <div className="max-w-4xl w-full mx-4 rounded-md shadow-lg">
+      <div className=" w-full rounded-md shadow-lg">
         <div className="bg-[#f1961f] px-6 py-4 rounded-t-md">
           <h2 className="text-xl font-bold text-white text-center">
             Add Class
@@ -61,7 +61,7 @@ const AddClass = () => {
         </div>
         <form
           onSubmit={handleSubmit(handleAddClass)}
-          className="p-6 bg-blue-100">
+          className="p-6 bg-[#f5d1a3]">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex flex-col">
               <label
@@ -73,7 +73,7 @@ const AddClass = () => {
                 defaultValue={user?.displayName}
                 disabled
                 type="text"
-                className="form-input italic rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
               />
             </div>
             <div className="flex flex-col">
@@ -84,7 +84,7 @@ const AddClass = () => {
                 defaultValue={user?.email}
                 disabled
                 type="email"
-                className="form-input italic rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input  p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
               />
             </div>
             <div className="flex flex-col">
@@ -96,7 +96,7 @@ const AddClass = () => {
               <input
                 name="courseName"
                 type="text"
-                className="form-input rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
                 {...register("courseName")}
               />
             </div>
@@ -109,7 +109,7 @@ const AddClass = () => {
               <input
                 name="classImg"
                 type="text"
-                className="form-input rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
                 {...register("classImg")}
               />
             </div>
@@ -120,7 +120,7 @@ const AddClass = () => {
               <input
                 name="seats"
                 type="number"
-                className="form-input rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
                 {...register("seats")}
               />
             </div>
@@ -132,7 +132,7 @@ const AddClass = () => {
                 name="price"
                 type="number"
                 step="0.01"
-                className="form-input rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
+                className="form-input p-2 rounded-md shadow-sm border border-navy-500 focus:ring-navy-500 focus:border-navy-500"
                 {...register("price")}
               />
             </div>
