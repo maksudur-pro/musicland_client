@@ -11,6 +11,11 @@ const MyClass = () => {
       <Helmet>
         <title>Instructor | My Class</title>
       </Helmet>
+      <div className="mx-auto text-center md:w-4/12 mb-6">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          My Class
+        </h3>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="md:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -65,6 +70,7 @@ const MyClass = () => {
           <h2 className="text-3xl text-center font-bold mb-2">
             Feedback Section
           </h2>
+          <div className="divider"></div>
           <div>
             {data.map((classObj) => (
               <div

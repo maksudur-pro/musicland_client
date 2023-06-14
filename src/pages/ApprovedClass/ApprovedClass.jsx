@@ -106,56 +106,94 @@ const ApprovedClasses = () => {
         </h3>
       </div>
       <div className="grid grid-cols-1 p-10 lg:p-0 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {classes.map((classObj) => (
-          <div
-            key={classObj._id}
-            className="card shadow-lg flex flex-col justify-between">
-            <img
-              src={classObj.classImg}
-              alt={classObj.courseName}
-              className="w-full rounded-xl object-cover"
-            />
-            <div className="card-body">
-              <h2 className="text-xl font-bold mb-2">{classObj.courseName}</h2>
-              <p className="">Instructor: {classObj.instructor_name}</p>
-              <p className="">Available seats: {classObj.seats}</p>
-              <p className="">Enrolled Student: {classObj.totalEnrolled}</p>
-            </div>
-            <div className="flex justify-between items-center p-4">
-              <p className="mb-2">Price: ${classObj.price}</p>
-              {!user && (
-                <Link to="/login">
-                  <button className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white">
+        {classes.map((classObj) =>
+          classObj.seats === 0 ? (
+            <div
+              key={classObj._id}
+              className="card text-white shadow-lg bg-red-700 flex flex-col justify-between">
+              <img
+                src={classObj.classImg}
+                alt={classObj.courseName}
+                className="w-full rounded-xl object-cover"
+              />
+              <div className="card-body">
+                <h2 className="text-xl font-bold mb-2">
+                  {classObj.courseName}
+                </h2>
+                <p className="">Instructor: {classObj.instructor_name}</p>
+                <p className="">Available seats: {classObj.seats}</p>
+                <p className="">No seats Available</p>
+                <p className="">Enrolled Student: {classObj.totalEnrolled}</p>
+              </div>
+              <div className="flex justify-between items-center p-4">
+                <p className="mb-2">Price: ${classObj.price}</p>
+                {classObj.seats === 0 && (
+                  <button
+                    disabled
+                    className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white">
                     Add Class
                   </button>
-                </Link>
-              )}
-              {data.role === "student" && (
-                <button
-                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
-                  onClick={() => handleSelect(classObj)}>
-                  Add Class
-                </button>
-              )}
-              {data.role === "admin" && (
-                <button
-                  disabled
-                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
-                  onClick={() => handleSelect(classObj)}>
-                  Add Class
-                </button>
-              )}
-              {data.role === "instructor" && (
-                <button
-                  disabled
-                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
-                  onClick={() => handleSelect(classObj)}>
-                  Add Class
-                </button>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ) : (
+            <div
+              key={classObj._id}
+              className="card shadow-lg flex flex-col justify-between">
+              <img
+                src={classObj.classImg}
+                alt={classObj.courseName}
+                className="w-full rounded-xl object-cover"
+              />
+              <div className="card-body">
+                <h2 className="text-xl font-bold mb-2">
+                  {classObj.courseName}
+                </h2>
+                <p className="">Instructor: {classObj.instructor_name}</p>
+                <p className="">Available seats: {classObj.seats}</p>
+                <p className="">Enrolled Student: {classObj.totalEnrolled}</p>
+              </div>
+              <div className="flex justify-between items-center p-4">
+                <p className="mb-2">Price: ${classObj.price}</p>
+                {classObj.seats === 0 && (
+                  <button className="btn disabled bg-[#f1961f] hover:bg-[#e99e3c] text-white">
+                    Add Class
+                  </button>
+                )}
+                {!user && (
+                  <Link to="/login">
+                    <button className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white">
+                      Add Class
+                    </button>
+                  </Link>
+                )}
+                {data.role === "student" && (
+                  <button
+                    className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                    onClick={() => handleSelect(classObj)}>
+                    Add Class
+                  </button>
+                )}
+                {data.role === "admin" && (
+                  <button
+                    disabled
+                    className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                    onClick={() => handleSelect(classObj)}>
+                    Add Class
+                  </button>
+                )}
+                {data.role === "instructor" && (
+                  <button
+                    disabled
+                    className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                    onClick={() => handleSelect(classObj)}>
+                    Add Class
+                  </button>
+                )}
+              </div>
+            </div>
+          )
+        )}
       </div>
     </>
   );

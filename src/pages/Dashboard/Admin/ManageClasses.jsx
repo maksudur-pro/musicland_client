@@ -70,9 +70,12 @@ const ManageClasses = () => {
       <Helmet>
         <title>Admin | Manage Classes</title>
       </Helmet>
+      <div className="mx-auto text-center md:w-4/12 mb-6">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          Manage Classes
+        </h3>
+      </div>
       <div>
-        <h1 className="text-3xl font-bold mb-4">Manage Classes</h1>
-        {/* classes cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.map((classObj) => (
             <div
@@ -80,7 +83,7 @@ const ManageClasses = () => {
               className="bg-white p-4 shadow-md rounded-lg">
               <img
                 src={classObj.classImg}
-                className="w-full object-cover mb-4"
+                className="w-full rounded object-cover mb-4"
               />
               <h2 className="text-xl font-bold mb-2">{classObj.courseName}</h2>
               <p className="mb-2"> Instructor: {classObj.instructor_name}</p>

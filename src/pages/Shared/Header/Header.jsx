@@ -2,9 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
+import useRole from "../../../Hooks/useRole";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { data } = useRole();
 
   const handleLogout = () => {
     logOut()
@@ -43,7 +45,15 @@ const Header = () => {
       </li>
       <li className="text-xl">
         <NavLink
-          to="/dashboard"
+          to={
+            data.role === "admin"
+              ? "/dashboard/manage_user"
+              : data.role === "student"
+              ? "/dashboard/selected"
+              : data.role === "instructor"
+              ? "/dashboard/my_class"
+              : "/dashboard"
+          }
           className={({ isActive }) =>
             isActive ? "text-[#f1961f]" : "default"
           }>

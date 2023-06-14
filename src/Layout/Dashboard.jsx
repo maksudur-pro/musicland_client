@@ -97,7 +97,6 @@ const Dashboard = () => {
           className="btn drawer-button ml-[200px] lg:hidden">
           <FaBars />
         </label>
-        <h1 className="text-2xl font-bold text-center">Dashboard</h1>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">

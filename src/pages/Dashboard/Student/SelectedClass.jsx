@@ -36,10 +36,12 @@ const SelectedClass = () => {
       <Helmet>
         <title>Student | Select Class</title>
       </Helmet>
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        My Selected Classes
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="mx-auto text-center md:w-4/12 mb-10">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          Select Class
+        </h3>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-6">
         {classes.map((classObj) =>
           classObj.payment === false ? (
             <div key={classObj._id} className="card shadow-lg">

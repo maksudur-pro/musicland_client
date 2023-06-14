@@ -75,6 +75,11 @@ const ManageUsers = () => {
       <Helmet>
         <title>Admin | Manage Users</title>
       </Helmet>
+      <div className="mx-auto text-center md:w-4/12 mb-6">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          Manage Users
+        </h3>
+      </div>
       <h3 className="text-3xl font-semibold my-4">
         Total Users: {users.length}
       </h3>
