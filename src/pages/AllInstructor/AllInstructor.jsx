@@ -41,7 +41,7 @@ const AllInstructor = () => {
           All Instructors
         </h3>
       </div>
-      <div className="grid p-10 lg:p-0 grid-cols-1 md:grid-cols-3 gap-6 md:py-20">
+      <div className="grid p-10 lg:p-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:py-20">
         {instructors.map((instructor) => (
           <div key={instructor._id} className="card bg-base-100 shadow-xl">
             <figure>

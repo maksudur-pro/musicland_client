@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaUserAlt } from "react-icons/fa";
+import { FaDrum, FaLandmark, FaMusic, FaUserAlt } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
 import useRole from "../../../Hooks/useRole";
@@ -64,7 +64,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 my-container">
+    <div className="navbar bg-base-100 my-container ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -84,14 +84,21 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            className="menu z-50 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             {navOption}
           </ul>
         </div>
         <Link
           to="/"
           className="text-2xl font-bold hidden lg:block  lg:text-3xl lg:font-extrabold ml-[160px] lg:ml-0">
-          Music<span className="text-[#f1961f]">Land</span>
+          <p className="flex">
+            <img
+              src="https://i.ibb.co/jJhy8wf/live-music.png"
+              alt=""
+              className=" w-8 h-8 mr-2"
+            />
+            Music<span className="text-[#f1961f]">Land</span>
+          </p>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

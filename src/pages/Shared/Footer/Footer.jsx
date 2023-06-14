@@ -6,7 +6,11 @@ const Footer = () => {
     <footer className="footer p-10 bg-base-200 text-base-content">
       <div>
         {/* todo adding logo */}
-        <h1>LOGO</h1>
+        <img
+          src="https://i.ibb.co/jJhy8wf/live-music.png"
+          alt="logo"
+          className="w-14 h-14"
+        />
         <p>
           <span className="text-2xl font-bold lg:text-3xl lg:font-extrabold">
             Music<span className="text-[#f1961f]">Land</span>
