@@ -172,6 +172,11 @@ const Register = () => {
                       value: 6,
                       message: "Password must be at least 6 characters",
                     },
+                    pattern: {
+                      value: /^(?=.*[@#$%^&+=])(?=.*[A-Z]) $/,
+                      message:
+                        "Please give at least one capital letter & one special character",
+                    },
                   })}
                   name="password"
                   className="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
