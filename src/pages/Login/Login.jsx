@@ -22,7 +22,6 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const { email, password } = data;
-    console.log(email);
     signIn(email, password)
       .then((result) => {
         const loggedIn = result.user;
@@ -42,7 +41,6 @@ const Login = () => {
       const email = user.email;
       const photo = user.photoURL;
       const saveUser = { name, email, role: "student", photo };
-      console.log(user);
       // Make a POST method
       fetch("https://music-land-server.vercel.app/users/google", {
         method: "POST",

@@ -53,7 +53,6 @@ const Checkout = ({ data }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
       setCardError(error.message);
     } else {
       setCardError("");

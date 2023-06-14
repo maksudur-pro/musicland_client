@@ -14,7 +14,6 @@ const ManageUsers = () => {
     axios
       .patch(`https://music-land-server.vercel.app/users/admin/${user._id}`)
       .then(({ data }) => {
-        console.log(data);
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -37,7 +36,6 @@ const ManageUsers = () => {
         `https://music-land-server.vercel.app/users/instructor/${user._id}`
       )
       .then(({ data }) => {
-        console.log(data);
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -60,7 +58,6 @@ const ManageUsers = () => {
     axios
       .delete(`https://music-land-server.vercel.app/users/${user._id}`)
       .then(({ data }) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           refetch();
         }

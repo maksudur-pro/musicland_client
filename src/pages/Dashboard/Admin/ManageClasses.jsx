@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
   const [data, refetch] = UseClass();
-  console.log(data);
 
   const handleApprove = async (classId) => {
     try {
@@ -59,7 +58,6 @@ const ManageClasses = () => {
   };
 
   const closeFeedbackModal = () => {
-    console.log("Closing feedback modal");
     setSelectedClass(null);
     setFeedbackText("");
     setFeedbackModalOpen(false);

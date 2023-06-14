@@ -20,7 +20,6 @@ const AddClass = () => {
       status: "pending",
       totalEnrolled: 0,
     };
-    console.log(newData);
     try {
       const response = await axios.post(
         "https://music-land-server.vercel.app/addClass",
