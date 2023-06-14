@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import LazyLoad from "react-lazy-load";
+import useRole from "../../Hooks/useRole";
 
 const ApprovedClasses = () => {
   const [classes, setClasses] = useState([]);
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { data } = useRole();
 
   useEffect(() => {
     fetchData();
@@ -121,11 +123,36 @@ const ApprovedClasses = () => {
             </div>
             <div className="flex justify-between items-center p-4">
               <p className="mb-2">Price: ${classObj.price}</p>
-              <button
-                className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
-                onClick={() => handleSelect(classObj)}>
-                Add Class
-              </button>
+              {!user && (
+                <Link to="/login">
+                  <button className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white">
+                    Add Class
+                  </button>
+                </Link>
+              )}
+              {data.role === "student" && (
+                <button
+                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                  onClick={() => handleSelect(classObj)}>
+                  Add Class
+                </button>
+              )}
+              {data.role === "admin" && (
+                <button
+                  disabled
+                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                  onClick={() => handleSelect(classObj)}>
+                  Add Class
+                </button>
+              )}
+              {data.role === "instructor" && (
+                <button
+                  disabled
+                  className="btn bg-[#f1961f] hover:bg-[#e99e3c] text-white"
+                  onClick={() => handleSelect(classObj)}>
+                  Add Class
+                </button>
+              )}
             </div>
           </div>
         ))}
