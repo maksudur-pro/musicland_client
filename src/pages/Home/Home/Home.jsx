@@ -4,6 +4,7 @@ import Contact from "./Contact";
 import Gallery from "./Gallery";
 import Slider from "./slider";
 import Support from "./Support";
+import PopularClasses from "./PopularClasses";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <title>Music Land | Home</title>
       </Helmet>
       <Slider></Slider>
+      <PopularClasses></PopularClasses>
       <Gallery></Gallery>
       <Support />
       <Contact></Contact>
