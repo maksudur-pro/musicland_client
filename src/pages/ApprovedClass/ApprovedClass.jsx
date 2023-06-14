@@ -81,12 +81,12 @@ const ApprovedClasses = () => {
       <Helmet>
         <title>Music Land | Classes</title>
       </Helmet>
-      <div className="mx-auto text-center md:w-4/12 my-10">
+      <div className="mx-auto text-center md:w-4/12 mb-10">
         <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
           All Classes
         </h3>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 p-10 lg:p-0 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classes.map((classObj) => (
           <div
             key={classObj._id}

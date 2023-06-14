@@ -17,13 +17,18 @@ const AllInstructor = () => {
       <Helmet>
         <title>Music Land | Instructors</title>
       </Helmet>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:py-20">
+      <div className="mx-auto text-center md:w-4/12 mb-10">
+        <h3 className="text-3xl uppercase border-b-4 font-bold py-4">
+          All Instructors
+        </h3>
+      </div>
+      <div className="grid p-10 lg:p-0 grid-cols-1 md:grid-cols-3 gap-6 md:py-20">
         {instructors.map((instructor) => (
-          <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl">
+          <div key={instructor._id} className="card bg-base-100 shadow-xl">
             <figure>
               <img
                 src={instructor.photo}
-                className="w-full h-96"
+                className="h-72 w-full"
                 alt="Teacher"
               />
             </figure>
