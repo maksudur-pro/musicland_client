@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
+import LazyLoad from "react-lazy-load";
 
 const AllInstructor = () => {
   const [instructors, setInstructors] = useState([]);
+  const { loading } = useAuth();
 
   useEffect(() => {
     axios
@@ -11,6 +14,22 @@ const AllInstructor = () => {
       .then((response) => setInstructors(response.data))
       .catch((error) => console.log(error));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="h-screen bg-white">
+        <LazyLoad
+          className="flex justify-center items-center h-full"
+          height={762}>
+          <img
+            className="h-16 w-16"
+            src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+            alt=""
+          />
+        </LazyLoad>
+      </div>
+    );
+  }
 
   return (
     <>

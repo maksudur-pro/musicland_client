@@ -4,10 +4,11 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import LazyLoad from "react-lazy-load";
 
 const ApprovedClasses = () => {
   const [classes, setClasses] = useState([]);
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,6 +26,22 @@ const ApprovedClasses = () => {
       console.log(error);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="h-screen bg-white">
+        <LazyLoad
+          className="flex justify-center items-center h-full"
+          height={762}>
+          <img
+            className="h-16 w-16"
+            src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+            alt=""
+          />
+        </LazyLoad>
+      </div>
+    );
+  }
 
   const handleSelect = (data) => {
     if (user && user.email) {
