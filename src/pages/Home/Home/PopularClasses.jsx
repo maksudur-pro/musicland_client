@@ -7,7 +7,7 @@ const PopularClasses = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/sortClasses")
+      .get("https://music-land-server.vercel.app/sortClasses")
       .then((response) => {
         setTopClasses(response.data);
       })
@@ -27,7 +27,7 @@ const PopularClasses = () => {
           popular classes
         </h3>
       </div>
-      <div className="grid p-10 lg:p-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+      <div className="grid p-10 lg:p-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {topClasses.map((classItem) => (
           <motion.div
             variants={cardVariants}
