@@ -4,6 +4,8 @@ import UseClass from "../../../Hooks/UseClass";
 import axios from "axios";
 import { MdPendingActions } from "react-icons/md";
 import { Helmet } from "react-helmet-async";
+import { useNavigation } from "react-router-dom";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const ManageClasses = () => {
   const [data, refetch] = UseClass();
@@ -62,6 +64,11 @@ const ManageClasses = () => {
     setFeedbackText("");
     setFeedbackModalOpen(false);
   };
+
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   return (
     <>

@@ -3,6 +3,8 @@ import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import LazyLoad from "react-lazy-load";
+import { useNavigation } from "react-router-dom";
+import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
 const AllInstructor = () => {
   const [instructors, setInstructors] = useState([]);
@@ -14,6 +16,11 @@ const AllInstructor = () => {
       .then((response) => setInstructors(response.data))
       .catch((error) => console.log(error));
   }, []);
+
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   if (loading) {
     return (

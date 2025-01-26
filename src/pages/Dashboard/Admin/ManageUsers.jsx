@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import { useNavigation } from "react-router-dom";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -66,6 +68,11 @@ const ManageUsers = () => {
         console.log(error);
       });
   };
+
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   return (
     <div className="w-full">

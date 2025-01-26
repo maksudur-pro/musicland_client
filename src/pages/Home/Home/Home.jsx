@@ -8,9 +8,17 @@ import PopularClasses from "./PopularClasses";
 import PopularInstructor from "./PopularInstructor";
 import useAuth from "../../../Hooks/useAuth";
 import LazyLoad from "react-lazy-load";
+import { useNavigation } from "react-router-dom";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const Home = () => {
   const { loading } = useAuth();
+
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
+
   if (loading) {
     return (
       <div className="h-screen bg-white">

@@ -2,10 +2,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import LazyLoad from "react-lazy-load";
 import useRole from "../../Hooks/useRole";
+import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
 const ApprovedClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -28,6 +34,11 @@ const ApprovedClasses = () => {
       console.log(error);
     }
   };
+
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   if (loading) {
     return (
