@@ -1,4 +1,4 @@
-MusicLand
+MusicLand 
 - Features: AIOX, Firebase, FramerMotion, Swiper, Stripe, Lottie React, React Hook Form, AOS, React Helmet, React LazyLoad, Sweet Alert.
 - Secure login ensured for students, admin, and instructors.
 - Data will show based on their role.
